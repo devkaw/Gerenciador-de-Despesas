@@ -37,6 +37,11 @@ def busca_despesas():
     busquinha = cursor.fetchall()
     return busquinha
 
+def calcular_soma_despesas():
+    cursor.execute("SELECT SUM(valor) FROM despesas")
+    soma = cursor.fetchone()[0]
+    return soma
+
 continuacao = 'y'
 while continuacao.lower() == 'y':
     print('''
@@ -44,6 +49,7 @@ while continuacao.lower() == 'y':
 2) Remover despesa da lista de despesas
 3) Ver despesas
 4) Ver despesas filtrando algo
+5) Ver somatória dos valores de todas as despesas
 ''')
     print("=" * 50)
     
@@ -136,6 +142,12 @@ while continuacao.lower() == 'y':
             else:
                 print(f'Nenhuma despesa encontrada na categoria {categoria_desejada}.') 
                 print("=" * 50)   
+
+    
+    elif opcao == 5:
+        soma_despesas = calcular_soma_despesas()
+        print(f'A soma dos valores de todas as despesas é de: R${soma_despesas:.2f}.')
+        print("=" * 50)
 
     continuacao = input('Você deseja continuar o programa? Digite Y para sim e N para não: ')
 
