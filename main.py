@@ -87,7 +87,7 @@ while continuacao.lower() == 'y':
         print("=" * 50)
         remover = int(input('Digite o ID da despesa que deseja remover: '))
         if not verificar_id_existente(remover):
-            print('ERROR: Esse ID já esta registrado no banco de dados. Se preferir, visualize os IDs já existentes para escolher um não existente.')
+            print('ERROR: Esse ID não está registrado no banco de dados. Se preferir, visualize os IDs já existentes para escolher um não existente.')
             print("=" * 50)
             continue
         cursor.execute("DELETE FROM despesas WHERE id = ?", (remover,))
