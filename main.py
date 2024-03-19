@@ -70,7 +70,6 @@ while continuacao.lower() == 'y':
         print("=" * 50)
 
     elif opcao == 2:
-        print("=" * 50)
         busca = busca_despesas()
         if busca:
             print('Lista de despesas: ')
@@ -80,11 +79,12 @@ while continuacao.lower() == 'y':
                 print("Nome:", despesa[2])
                 print("Valor:", despesa[3])
                 print("-" * 30)
-                print("=" * 50)
-
+                
         else:
             print("Não há nenhuma despesa adicionada.")
+            print("=" * 50)
             continue
+        print("=" * 50)
         remover = int(input('Digite o ID da despesa que deseja remover: '))
         cursor.execute("DELETE FROM despesas WHERE id = ?", (remover,))
         conexao.commit()
@@ -92,7 +92,6 @@ while continuacao.lower() == 'y':
         print("=" * 50)
 
     elif opcao == 3:
-        print("=" * 50)
         busca = busca_despesas()
         if busca:
             print('Lista de despesas: ')
@@ -102,7 +101,7 @@ while continuacao.lower() == 'y':
                 print("Nome:", despesa[2])
                 print("Valor:", despesa[3])
                 print("-" * 30)
-                print("=" * 50)
+        print("=" * 50)
 
     elif opcao == 4:
         print('''
@@ -120,10 +119,9 @@ while continuacao.lower() == 'y':
                 print("Categoria:", id_filtrado[1])
                 print("Nome:", id_filtrado[2])
                 print("Valor:", id_filtrado[3])
-                print("=" * 50)
             else:
                 print('Nenhuma despesa encontrada com o ID informado.')
-                print("=" * 50)
+            print('=' * 50)
 
         if filtro == 2:
             categoria_desejada = input('Digite a categoria que deseja filtrar: ')
@@ -138,10 +136,10 @@ while continuacao.lower() == 'y':
                     print("Nome:", despesinha[2])
                     print("Valor:", despesinha[3])
                     print("-" * 30)
-                    print("=" * 50)
+                    
             else:
                 print(f'Nenhuma despesa encontrada na categoria {categoria_desejada}.') 
-                print("=" * 50)   
+            print("=" * 50)  
 
     
     elif opcao == 5:
