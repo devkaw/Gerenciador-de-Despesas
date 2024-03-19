@@ -58,7 +58,7 @@ while continuacao.lower() == 'y':
     if opcao == 1:
         id = int(input('Digite o ID que deseja dar para a sua despesa: '))
         if verificar_id_existente(id):
-            print('ERROR: Esse id já esta registrado no banco de dados. Se preferir, visualize os IDs já existentes para escolher um não existente.')
+            print('ERROR: Esse ID já esta registrado no banco de dados. Se preferir, visualize os IDs já existentes para escolher um não existente.')
             print("=" * 50)
             continue
         categoria = input('Digite a categoria que deseja dar para a sua despesa: ')
@@ -86,6 +86,10 @@ while continuacao.lower() == 'y':
             continue
         print("=" * 50)
         remover = int(input('Digite o ID da despesa que deseja remover: '))
+        if not verificar_id_existente(remover):
+            print('ERROR: Esse ID já esta registrado no banco de dados. Se preferir, visualize os IDs já existentes para escolher um não existente.')
+            print("=" * 50)
+            continue
         cursor.execute("DELETE FROM despesas WHERE id = ?", (remover,))
         conexao.commit()
         print('Despesa removida do banco de dados com sucesso!')
