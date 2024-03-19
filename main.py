@@ -56,7 +56,7 @@ while continuacao.lower() == 'y':
     opcao = int(input('Digite a opção desejada: '))
 
     if opcao == 1:
-        id = int(input('Digite o ID que deseja dar para a sua despesa: '))
+        id = int(input('Digite o ID que deseja dar para a sua despesa (ele precisa ter no máximo 3 caracteres): '))
         if verificar_id_existente(id):
             print('ERROR: Esse ID já esta registrado no banco de dados. Se preferir, visualize os IDs já existentes para escolher um não existente.')
             print("=" * 50)
