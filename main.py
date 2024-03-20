@@ -1,5 +1,7 @@
 import sqlite3
 
+
+# Criando nossa conexão, cursor e banco de dados
 conexao = sqlite3.connect('banco.db')
 cursor = conexao.cursor()
 
@@ -16,6 +18,8 @@ inserir_informacoes = """
 INSERT INTO despesas (id, categoria, nome, valor) VALUES (?, ?, ?, ?)
 """
 
+
+# O nosso print de instruções e nossas funções para o funcionamento do programa 
 print('Bem vindos ao Gerenciador de Despesas! Nele, você pode adicionar despesas, remover despesas e ver as despesas que já foram adicionadas. Todas as suas alterações serão salvas em um banco de dados! Isso quer dizer que quando você fechar o programa, suas alterações continuarão lá!')
 def verificar_id_existente(id):
     cursor.execute("SELECT id FROM despesas WHERE id = ?", (id,))
@@ -43,6 +47,9 @@ def calcular_soma_despesas():
     return soma
 
 continuacao = 'y'
+
+
+# O nosso loop e as opções que podem ser escolhidas
 while continuacao.lower() == 'y':
     print('''
 1) Adicionar despesa
@@ -55,6 +62,8 @@ while continuacao.lower() == 'y':
     
     opcao = int(input('Digite a opção desejada: '))
 
+
+# Todo o código para caso o usuário escolher a 1º opção
     if opcao == 1:
         id = int(input('Digite o ID que deseja dar para a sua despesa (ele precisa ter no máximo 3 caracteres): '))
         if verificar_id_existente(id):
@@ -69,6 +78,8 @@ while continuacao.lower() == 'y':
         print('Despesa adicionada no banco de dados com sucesso!')
         print("=" * 50)
 
+
+# Todo o código para caso o usuário escolher a 2º opção
     elif opcao == 2:
         busca = busca_despesas()
         if busca:
@@ -95,6 +106,8 @@ while continuacao.lower() == 'y':
         print('Despesa removida do banco de dados com sucesso!')
         print("=" * 50)
 
+
+# Todo o código para caso o usuário escolher a 3º opção
     elif opcao == 3:
         busca = busca_despesas()
         if busca:
@@ -107,6 +120,9 @@ while continuacao.lower() == 'y':
                 print("-" * 30)
         print("=" * 50)
 
+
+
+# Todo o código para caso o usuário escolher a 4º opção
     elif opcao == 4:
         print('''
 1) Filtrar por ID
@@ -145,14 +161,19 @@ while continuacao.lower() == 'y':
                 print(f'Nenhuma despesa encontrada na categoria {categoria_desejada}.') 
             print("=" * 50)  
 
-    
+
+# Todo o código para caso o usuário escolher a 5º opção    
     elif opcao == 5:
         soma_despesas = calcular_soma_despesas()
         print(f'A soma dos valores de todas as despesas é de: R${soma_despesas:.2f}.')
         print("=" * 50)
 
+
+# Pergunta de continuação
     continuacao = input('Você deseja continuar o programa? Digite Y para sim e N para não: ')
 
+
+# Caso o usuário não apertar y
 print('Obrigado por usar meu programa!')
 conexao.close()
 
