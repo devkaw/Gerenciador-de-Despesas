@@ -72,7 +72,7 @@ while continuacao.lower() == 'y':
             continue
         categoria = input('Digite a categoria que deseja dar para a sua despesa: ')
         nome = input('Digite o nome que deseja dar para a sua despesa: ')
-        valor = float(input('Digite o valor da despesa: '))
+        valor = float(input('Digite o valor da despesa: ').replace(',','.'))
         cursor.execute(inserir_informacoes, (id, categoria, nome, valor))
         conexao.commit()
         print('Despesa adicionada no banco de dados com sucesso!')
@@ -175,5 +175,6 @@ while continuacao.lower() == 'y':
 
 # Caso o usuário não apertar y
 print('Obrigado por usar meu programa!')
+input('Pressione qualquer tecla para fechar: ')
 conexao.close()
 
